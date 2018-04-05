@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/verid_utils.svg)](https://badge.fury.io/js/verid_utils)
+
 # Ver-ID Node JS Utilities
 
 Utilities for converting and comparing Ver-ID face templates
