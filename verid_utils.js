@@ -11,16 +11,18 @@ function get_norm(v1) {
 }
 
 function get_score_between_templates_with_specified_norms(v1, v1_norm, v2, v2_norm) {
-    return inner_product(v1, v2) / (v1_norm * v2_norm);
+    return inner_product(v1, v2) / (v1_norm * v2_norm) / standardDeviation;
 }
 
 function get_score_between_templates_with_unit_norms(v1, v2) {
-    return inner_product(v1, v2);
+    return inner_product(v1, v2) / standardDeviation;
 }
 
 function get_score_between_templates(v1, v2) {
     return get_score_between_templates_with_specified_norms(v1, v2, get_norm(v1), get_norm(v2));
 }
+
+const standardDeviation = 0.1786;
 
 module.exports = {
     /**
@@ -29,7 +31,7 @@ module.exports = {
      * @param {(string|number[])} t2 Face template (array of floating point integer values or base 64 encoded string)
      * @param {number} [norm1=1] Template 1 norm (optional)
      * @param {number} [norm2=1] Template 2 norm (optional)
-     * @returns Similarity score between 0.0 and 1.0
+     * @returns Similarity score between 0.0 and 5.0
      */
     "compareFaceTemplates": function(t1, t2, norm1, norm2) {
         if (typeof t1 === "string") {

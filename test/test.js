@@ -15,13 +15,13 @@ describe("Test Ver-ID utilities", function() {
 	});
 	it("Compares same face templates", function() {
 		var score = veridUtil.compareFaceTemplates(floats, floats);
-		expect(Math.round(score*1000)).to.equal(1000);
+		expect(Math.round(score*1000)).to.be.above(5000);
 	});
 	it("Compares different face templates", function() {
 		var floatsRev = floats.slice();
 		floatsRev.reverse();
 		var score = veridUtil.compareFaceTemplates(floats, floatsRev);
-		expect(Math.round(score*1000)).to.not.equal(1000);
+		expect(Math.round(score*1000)).to.be.below(4000);
 	});
 	it("Tests that template 'norm' calculation is 1", function() {
 		var norm = veridUtil.getNorm(floats);

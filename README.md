@@ -18,12 +18,15 @@ var veridUtils = require("verid_utils");
 
 ### Face template comparison
 
+The template comparison function returns a score roughly between 0.0 (totally different faces) and 5.0 or higher (identical faces).
+
+The similarity threshold for faces will vary slightly depending on the use case. 4.0 is a good all-purpose threshold that minimises false rejection while maintaining low false acceptance. 4.5 should nearly rule out false acceptance in most scenarios.
+
 ~~~javascript
 // Templates may be Base64-encoded strings or arrays or floating point integer values
 var template1 = "..."; // Face template 1
 var template2 = "..."; // Face template 2
 var score = veridUtils.compareFaceTemplates(template1, template2);
-// Score will range from 0.0 (totally different) to 1.0 (identical)
 ~~~
 
 ### Face template conversion
